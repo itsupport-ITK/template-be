@@ -1,0 +1,407 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Backend",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "/api/",
+            "description": "LIVE server"
+        }
+    ],
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login to access",
+                "description": "Return login user",
+                "operationId": "postLogin",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "itsupport@itk.ac.id"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "its124"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "post successfully retrieved"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/auth/profile": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get user profile and data",
+                "description": "Do get profile",
+                "operationId": "bd0250ee34235b4fc170a8f1e28f4bd5",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout user and revoke all token",
+                "description": "Do Logout",
+                "operationId": "6abf3b64a4bc7838d56346f05a5153af",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/setting/list": {
+            "get": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "get list of settings",
+                "description": "get list of settings with given parameters",
+                "operationId": "29d00af818926768a537bf1615891e72",
+                "responses": {
+                    "200": {
+                        "description": "setting successfully retrieved"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/setting/update/{settings}": {
+            "put": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "update settings",
+                "description": "Update settings",
+                "operationId": "5065081b43f0c353eb7b9ce69bca4849",
+                "parameters": [
+                    {
+                        "name": "settings",
+                        "in": "path",
+                        "description": "id settings",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Setting"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "settings successfully updated"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/setting/languages/list": {
+            "get": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "get list of language settings",
+                "description": "get list of language settings",
+                "operationId": "a332a348335c6a9d76b6009aa0cb754a",
+                "responses": {
+                    "200": {
+                        "description": "language setting successfully retrieved"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/user/list": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "get list of users",
+                "description": "get list of users with given parameters",
+                "operationId": "17252d9e1d1a86f04087ddc83c44b1d5",
+                "responses": {
+                    "200": {
+                        "description": "users successfully created"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/user/store": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "create user",
+                "description": "create user",
+                "operationId": "createUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User berhasil ditambahkan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/user/update/{user}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "update user",
+                "description": "Update user",
+                "operationId": "2e721b84763dc148b0fad74c081953a7",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "id user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user successfully updated"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/user/delete/{user}": {
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete user",
+                "description": "Delete user",
+                "operationId": "952c98838abc7c5bf79cc71a7fdc1c0d",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "user deleted"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Setting": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "language"
+                    },
+                    "description": {
+                        "type": "array",
+                        "items": {},
+                        "example": {
+                            "id": "indonesian description",
+                            "en": "english description"
+                        }
+                    },
+                    "model": {
+                        "type": "string",
+                        "example": "App\\Models\\Language"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "example@itk.ac.id"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Test Name"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "password124!"
+                    }
+                },
+                "type": "object"
+            },
+            "UserSettings": {
+                "properties": {
+                    "user_id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "setting_id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "value": {
+                        "type": "string",
+                        "example": "IO"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "ITK Api OAUTH2.",
+                "in": "header",
+                "name": "Authorization"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "Dapatkan token yang akan digunakan untuk mengakses API"
+        },
+        {
+            "name": "Setting",
+            "description": "Setting"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        }
+    ]
+}

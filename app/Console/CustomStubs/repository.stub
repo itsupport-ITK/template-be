@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Repositories\BaseRepository;
+
+class {{ class }} extends BaseRepository
+{
+    //define your function here
+}

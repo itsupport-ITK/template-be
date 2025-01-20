@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\BaseApiController;
+use Illuminate\Http\Request;
+
+class {{ class }} extends BaseApiController
+{
+    //
+}
