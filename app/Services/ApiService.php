@@ -94,10 +94,13 @@ class ApiService
      */
     private function getToken(int $userId): ?string{
 
-        $tokenRepository = new TokenRepository;
-        $token = $tokenRepository->get($userId);
+        /**
+         * Nyalakan jika mengambil token dari api lain
+         */
+        // $tokenRepository = new TokenRepository;
+        // $token = $tokenRepository->get($userId);
 
-        return $token;
+        return null;
     }
 
     /**
@@ -105,14 +108,6 @@ class ApiService
      */
     public function getBaseUrl(): string{
         
-        return config('api.url.gerbang');
-    }
-
-    /**
-     * get token name for creating token
-     */
-    public function getTokenName() : string{
-        
-        return $this->tokenName;
+        return config('api.url');
     }
 }

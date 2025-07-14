@@ -28,7 +28,7 @@ class AuthRepository extends BaseRepository
         $userSettingRepository = new UserSettingRepository();
         $user = User::where('email', $email)->firstOrFail();
 
-        $token = $user->createToken($user->email. ' '. env('APP_NAME'))->accessToken;
+        $token = $user->createToken($user->email. ' '. config('app.name'))->accessToken;
         $userSettingRepository->createDefault($user);
         $this->updateLastLogin($user);
 

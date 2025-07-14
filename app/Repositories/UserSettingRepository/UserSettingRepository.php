@@ -70,7 +70,7 @@ class UserSettingRepository extends BaseRepository
             'user_id' => $user->id,
             'setting_id' => Setting::LANGUAGE['id'],
         ], [
-            'value' => 'en'
+            'value' => 'id'
         ]);
         
         return $settings;

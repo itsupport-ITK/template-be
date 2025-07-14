@@ -11,9 +11,9 @@ return [
     |
     */
 
-    // 'url' => [
-    //     'gerbang' => env('API_GERBANG_URL')
-    // ],
+    'url' => [
+        'main' => env('API_GERBANG_URL')
+    ],
     // 'username' => env('API_USER'),
     // 'password' => env('API_PASSWORD'),
     // 'token' => [
